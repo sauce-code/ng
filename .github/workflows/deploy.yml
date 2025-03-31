@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
@@ -29,4 +29,4 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.NG }}
-        run: npm run ng deploy --repo="https://github.com/sauce-code/ng.git" --base-href=/ng/
+        run: npm run ng deploy --base-href=/ng/
