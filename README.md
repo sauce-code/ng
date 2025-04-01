@@ -1,5 +1,7 @@
 # ng
 
+![example workflow](https://github.com/sauce-code/ng/actions/workflows/deploy.yml/badge.svg)
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
 
 ## Development server
