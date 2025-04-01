@@ -28,5 +28,5 @@ jobs:
 
       - name: Deploy to GitHub Pages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run ng deploy --repo="https://github.com/sauce-code/ng.git" --base-href=/ng/
