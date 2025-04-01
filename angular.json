@@ -94,8 +94,8 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/ng/",
-            "name": "abc",
-            "email": "abc@example.org"
+            "name": "workflow",
+            "email": "workflow@example.org"
           }
         }
       }
