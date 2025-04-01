@@ -93,7 +93,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "repo": "https://sauce-code.github.io/",
+            "repo": "https://github.com/sauce-code/ng.git",
             "baseHref": "/ng/",
             "name": "Github Actions",
             "email": "ghactions@example.org"
