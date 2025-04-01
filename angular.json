@@ -91,7 +91,12 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/ng/",
+            "name": "Github Actions",
+            "email": "ghactions@example.org"
+          }
         }
       }
     }
