@@ -1,7 +1,9 @@
-name: Build & Deploy to GitHub Pages
+name: Build/Deploy
 
 on:
   push:
+    branches: [ "main" ]
+  pull_request:
     branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -9,7 +11,7 @@ on:
 
 jobs:
   # Build job
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +25,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Build
+        run: npm ng build
+
       - name: Deploy to GitHub Pages
+        if: ${{ github.event_name == 'push' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run ng deploy

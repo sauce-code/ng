@@ -93,6 +93,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
+            "noBuild": true,
             "baseHref": "/ng/",
             "name": "workflow",
             "email": "workflow@example.org"
