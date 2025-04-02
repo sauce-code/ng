@@ -17,6 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -27,6 +30,9 @@ jobs:
 
       - name: Build
         run: npm run ng build
+
+      - name: Test
+        run: npm run ng test
 
       - name: Deploy to GitHub Pages
         if: ${{ github.event_name == 'push' }}
