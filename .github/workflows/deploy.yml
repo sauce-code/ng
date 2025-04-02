@@ -10,8 +10,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Build job
-  build:
+
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,11 +34,17 @@ jobs:
       - name: Test
         run: npm run ng test
 
+  deploy:
+    if: ${{ github.event_name == 'push' }}
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Build
         run: npm run ng build
 
       - name: Deploy to GitHub Pages
-        if: ${{ github.event_name == 'push' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run ng deploy
