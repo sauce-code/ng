@@ -6,16 +6,12 @@ on:
   pull_request:
     branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
-
-  test:
+  all:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
@@ -26,7 +22,7 @@ jobs:
           node-version: lts/*
 
       - name: Install Dependencies
-        run: npm install
+        run: npm clean-install
 
       - name: Lint
         run: npx eslint ./src/
@@ -34,17 +30,11 @@ jobs:
       - name: Test
         run: npm run ng test
 
-  deploy:
-    if: ${{ github.event_name == 'push' }}
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
       - name: Build
         run: npm run ng build
 
       - name: Deploy to GitHub Pages
+        if: ${{ github.event_name == 'push' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run ng deploy
